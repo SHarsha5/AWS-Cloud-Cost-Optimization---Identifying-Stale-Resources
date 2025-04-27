@@ -22,13 +22,17 @@ Once the Lambda function is deployed and the IAM role is properly attached, the 
 
 1st Use Case: Snapshot is attached to an EBS volume, and the EBS volume is also attached to an EC2 instance
 In this scenario, the Lambda function should not delete the snapshot, as it is still associated with an active EC2 instance.
- 
+![image](https://github.com/user-attachments/assets/4eb0fcc2-2024-4232-95bc-3ad33ae30b78)
+
 
 2nd Use Case: The EC2 instance is deleted, but the EBS volume and its snapshot are still present.
 In this scenario, the Lambda function should identify the snapshot as stale (because it is no longer attached to an active EC2 instance) and proceed to delete it.
- 
+![image](https://github.com/user-attachments/assets/b81fcdad-b96c-41fc-a417-58b64acdeff2)
+
 3rd Use Case: Both the EC2 instance and the EBS volume are deleted, but the snapshot still exists.
 In this scenario, the Lambda function should also identify the snapshot as stale (since the EC2 instance and the EBS volume are both deleted), and it should proceed to delete the snapshot.
+![image](https://github.com/user-attachments/assets/d2640f39-267d-46cb-b827-0591f20bbd1a)
+
  
 
 
