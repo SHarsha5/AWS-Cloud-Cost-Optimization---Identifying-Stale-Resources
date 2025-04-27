@@ -3,12 +3,11 @@
 In this project, I have created a Lambda function that identifies stale EBS snapshots that are no longer associated with any active EC2 instance or EBS volumes and deletes them to save on storage costs.
 # Description:
 The Lambda function fetches all EBS snapshots owned by the same account ('self') and also retrieves a list of active EC2 instances (running and stopped). For each snapshot, it checks if the associated volume (if exists) is not associated with any active instance. If it finds a stale snapshot, it deletes it, effectively optimizing storage costs.
-# Prerequisites:
-1.	IAM Role for Lambda with the following permissions:
-o	ec2:DescribeSnapshots
-o	ec2:DescribeVolumes
-o	ec2:DescribeInstances
-o	ec2:DeleteSnapshot
+# Prerequisites: IAM Role for Lambda with the following permissions:
+-> ec2:DescribeSnapshots
+-> ec2:DescribeVolumes
+-> ec2:DescribeInstances
+-> ec2:DeleteSnapshot
 # Detailed Execution:
 Step1: - Create a Lambda function and deploy the python code that will detect the stale EBS snapshots and deletes it, To ensure the Lambda function completes successfully, especially in environments with a large number of snapshots or volumes, consider increasing the timeout setting: [from default 3 sec to 10 to 2o sec]
  
