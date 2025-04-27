@@ -6,4 +6,4 @@ The Lambda function interacts with multiple AWS services through API calls, such
 In environments with many EC2 instances, EBS volumes, or snapshots, the number of API calls required increases significantly. For instance, checking each snapshot to see if it's still attached to a running EC2 instance involves calling describe_volumes for each snapshot, which can take time. This process can be slow if there are hundreds or thousands of resources.
 
 3. Default Timeout is Too Short:
-By default, AWS Lambda has a 3-second timeout, which is too short for tasks that involve multiple API calls or large datasets. With a higher timeout (e.g., 30–60 seconds), the function can complete the necessary checks and deletions without being prematurely stopped, ensuring that all resources are processed correctly.
+By default, AWS Lambda has a 3-second timeout, which is too short for tasks that involve multiple API calls or large datasets. With a higher timeout (e.g., 10–20 seconds), the function can complete the necessary checks and deletions without being prematurely stopped, ensuring that all resources are processed correctly.
